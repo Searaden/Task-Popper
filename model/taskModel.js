@@ -1,15 +1,23 @@
-//ADD REEQUIRE
+const { DataTypes } = require('sequelize');
+const { v4: uuidv4 } = require('uuid');
+const sequelize = require('../config/database');
 
-class task {
-    constructor (name , size){
-         this.name = name;
-         this.size = size;
-         this.subtask = [];
-    }
-    
-    addSubtask(subtask) {
-        this.subtasks.push(subtask);
-    }
-}
+const Task = sequelize.define('Task', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: uuidv4, // Assign the UUIDv4 function as the default value
+    primaryKey: true,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  size: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-model.exports = task;
+Task.hasMany(Task, { as: 'subtasks', foreignKey: 'taskId' });
+
+module.exports = Task;
