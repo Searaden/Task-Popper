@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('task_db', 'root', 'Long_54manBean99', {
+const sequelize = new Sequelize('task_db', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   // additional configuration options
