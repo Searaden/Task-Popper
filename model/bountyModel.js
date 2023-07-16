@@ -12,16 +12,31 @@ const Bounty = sequelize.define('Task', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  bubbleBucks: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   task_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references:{
+    references: {
       model:'task',
       id:'id'
     }
   },
+  // assignee_id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   references: {
+  //     model: 'user',
+  //     id:'id'
+  //   }
+  // },
 });
 
-Task.hasMany(Task, { as: 'subtasks', foreignKey: 'taskId' });
+Bounty.hasMany(Task, {
+  foreignKey: 'taskId',
+  onDelete: "CASCADE",
+});
 
 module.exports = Task;
