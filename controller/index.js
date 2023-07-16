@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const subtaskRoutes = require('./subtaskRoutes');
 const taskRoutes = require('./taskRoutes');
-const bountyRoutes = require('./taskRoutes');
+const bountyRoutes = require('./bountyRoutes');
 
 router.use('/task', taskRoutes);
 router.use('/task/subtask', subtaskRoutes);

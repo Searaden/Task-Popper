@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
       // task.user_ID matches my userID(via sessionkey)
       // AND bounties that match its task_id
     });
+
+    console.log("I found my bounties: "+ bountiesCreatedByMe)
     return res.json({ bountiesCreatedByMe });
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
