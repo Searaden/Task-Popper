@@ -39,4 +39,4 @@ Bounty.hasMany(Task, {
   onDelete: "CASCADE",
 });
 
-module.exports = Task;
+module.exports = Bounty;
