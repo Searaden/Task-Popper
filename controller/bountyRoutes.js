@@ -6,6 +6,7 @@ const Bounty = require('../model/taskModel');
 router.get('/', async (req, res) => {
   try {
     const bountiesCreatedByMe = await Bounty.findAll({
+      //include: { model: task},
       //where:
       // task.user_ID matches my userID(via sessionkey)
       // AND bounties that match its task_id

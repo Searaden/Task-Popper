@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../config/database');
 
-const Bounty = sequelize.define('Task', {
+const Bounty = sequelize.define('Bounty', {
   id: {
     type: DataTypes.UUID,
     defaultValue: uuidv4, // Assign the UUIDv4 function as the default value
