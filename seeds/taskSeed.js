@@ -14,14 +14,6 @@ const taskData = [
         name: 'Hold me to pop',
         size: 'small'
     },
-    {
-        name: '',
-        size: ''
-    },
-    {
-        name: '',
-        size: ''
-    },
 ]
 
 const seedTasks = () => Task.bulkCreate(taskData);

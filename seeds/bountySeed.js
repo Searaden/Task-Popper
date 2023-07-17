@@ -1,4 +1,4 @@
-const  Bounty = require('../model/bountyModel');
+const Bounty = require('../model/bountyModel');
 
 const bountyData = [
     {
@@ -22,9 +22,9 @@ const bountyData = [
     },
 ]
 
-const seedBounties = () => Bounty.bulkCreate(bountyData);
+const seedBounty = () => Bounty.bulkCreate(bountyData);
 
-seedBounties(); //comment out on integration
+seedBounty(); //comment out on integration
 
 
-module.exports = seedBounties;
+module.exports = seedBounty;

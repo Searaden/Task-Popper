@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const Bounty = require('../model/taskModel');
+const Bounty = require('../model/bountyModel');
 
 // Get all bounties // ! CREATED by ME
 router.get('/', async (req, res) => {
   try {
-    const bountiesCreatedByMe = await Bounty.findAll({
+    const bountiesCreatedByMe = await Bounty.findAll(
+      //{
       //include: { model: task},
       //where:
       // task.user_ID matches my userID(via sessionkey)
       // AND bounties that match its task_id
-    });
+    //}
+    );
 
-    console.log("I found my bounties: "+ bountiesCreatedByMe)
-    return res.json({ bountiesCreatedByMe });
+    //console.log("I found my bounties: "+ bountiesCreatedByMe)
+    return res.status(200).json( bountiesCreatedByMe );
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }
@@ -27,7 +29,7 @@ router.get('/assigned', async (req, res) => {
       // bounty.assignee_ID matches my userID(via sessionkey)
       // AND bounties that match its task_id
     });
-    return res.json({ bountiesAssignedToMe });
+    return res.json( bountiesAssignedToMe );
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }
@@ -42,7 +44,7 @@ router.get('/:id', async (req, res) => {
     if (!bounty) {
       return res.status(404).json({ error: 'Bounty not found' });
     }
-    return res.status(200).json({ bounty });
+    return res.status(200).json( bounty );
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }
@@ -53,7 +55,7 @@ router.post('/', async (req, res) => {
   const { price, task_id } = req.body;
   try {
     const newBounty = await Bounty.create({ price, task_id });
-    return res.status(200).json({ newBounty });
+    return res.status(200).json( newBounty );
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }

@@ -6,14 +6,14 @@
 const { Task, Bounty /*,User */ } = require('../model');
 
 const seedTasks = require('./taskSeed');
-const seedBounties = require('./bountySeed');
+const seedBounty = require('./bountySeed');
 //const seedUsers = require('./userSeed');
 
 const seedAll = async () =>{
     //await seedUsers();
-    await seedTasks();
+    //await seedTasks();
     //TODO: need to pass seeded tasks UUID to seed Bounties (array.map)
-    await seedBounties(); //MUST OCCUR AFTER TASKS SEED
+    await seedBounty(); //MUST OCCUR AFTER TASKS SEED
 }
 
 // uncommment seedAll();
