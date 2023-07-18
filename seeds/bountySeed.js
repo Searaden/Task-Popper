@@ -24,7 +24,4 @@ const bountyData = [
 
 const seedBounty = () => Bounty.bulkCreate(bountyData);
 
-seedBounty(); //comment out on integration
-
-
 module.exports = seedBounty;

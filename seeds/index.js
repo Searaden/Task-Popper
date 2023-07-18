@@ -16,4 +16,4 @@ const seedAll = async () =>{
     await seedBounty(); //MUST OCCUR AFTER TASKS SEED
 }
 
-// uncommment seedAll();
+seedAll();
