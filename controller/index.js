@@ -1,11 +1,13 @@
 const router = require('express').Router();
 
-const subtaskRoutes = require('./subtaskRoutes');
-const taskRoutes = require('./taskRoutes');
-const bountyRoutes = require('./bountyRoutes');
+const homeRoutes = require('./homeRoutes');
+const apiRoutes = require('./api');
 
-router.use('/task', taskRoutes);
-router.use('/task/subtask', subtaskRoutes);
-router.use('/bounty', bountyRoutes);
+router.use('/', homeRoutes);
+router.use('/api', apiRoutes);
+
+
 
 module.exports = router;
+
+//new file
