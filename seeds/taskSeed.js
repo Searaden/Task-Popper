@@ -1,18 +1,22 @@
+// PURPOSE: give user a hands-on tutorial
+
 const { Task } = require('../model');
 
 const taskData = [
     {
         name: 'Create NEW tasks with VERBS',
-        size: 'big'
+        size: 2
         //subtasks not needed
     },
     {
-        name: 'Click me to see subtasks for this PROJECT',
-        size: 'Big'
+        name: 'Hold me to pop',
+        size: 2
+        //subtasks not needed
     },
     {
-        name: 'Hold me to pop',
-        size: 'small'
+        name: 'Click me to view subtasks for this task',
+        size: 4
+        //subtasks need
     },
 ]
 
