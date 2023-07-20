@@ -3,7 +3,7 @@ const router = express.Router();
 const Task = require('../model/taskModel');
 
 // Post route for subtask
-router.post('/task/:taskId/subtasks', async (req, res) => {
+router.post('/:taskId', async (req, res) => {
     const { taskId } = req.params;
     const { name, size } = req.body;
   
@@ -25,7 +25,7 @@ router.post('/task/:taskId/subtasks', async (req, res) => {
   
 
 // Get route for subtask
-router.get('/task/:ID/subtasks', async (req, res) => {
+router.get('/:ID', async (req, res) => {
     const { taskID } = req.params;
   
     try {
@@ -45,7 +45,7 @@ router.get('/task/:ID/subtasks', async (req, res) => {
 
 // Update Route for Subtask
 // Update Route for Subtask
-router.put('/task/:taskId/subtasks/:subtaskId', async (req, res) => {
+router.put('/:taskId/:subtaskId', async (req, res) => {
     const { taskId, subtaskId } = req.params;
     const { name, size } = req.body;
   
@@ -75,7 +75,7 @@ router.put('/task/:taskId/subtasks/:subtaskId', async (req, res) => {
   });
   
 // Delete route for subtask
-router.delete('/task/:taskId/subtasks/:subtaskId', async (req, res) => {
+router.delete('/:taskId/:subtaskId', async (req, res) => {
     const { taskId, subtaskId } = req.params;
   
     try {
