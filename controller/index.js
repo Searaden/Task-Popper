@@ -3,12 +3,7 @@ const router = require('express').Router();
 const homeRoutes = require('./homeRoutes');
 const apiRoutes = require('./api');
 
-router.use('/task', taskRoutes);
-router.use('/subtask', subtaskRoutes);
-router.use('/bounty', bountyRoutes);
-
-
+router.use('/', homeRoutes);
+router.use('/api', apiRoutes);
 
 module.exports = router;
-
-//new file
