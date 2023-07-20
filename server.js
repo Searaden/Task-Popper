@@ -20,6 +20,16 @@ app.use(session({
   saveUninitialized: false
 }));
 
+// Set up express-session middleware
+app.use(session({
+  secret: 'secret', // replace with a real secret in production
+  store: new SequelizeStore({
+    db: sequelize
+  }),
+  resave: false,
+  saveUninitialized: false
+}));
+
 const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
