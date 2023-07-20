@@ -1,0 +1,19 @@
+body {
+  background: linear-gradient(to left, #87CEEB, #bcd8ee, #87CEEB);
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-color: rgba(135, 206, 235, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
