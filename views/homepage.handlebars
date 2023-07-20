@@ -1,9 +1,10 @@
+<div class="circle-container">
 {{#each tasks as |task|}}
-    <div class="bubble"> <!-- need matter.js for collision-->
-        <h2>{{}}</h2>
-        {{#if bounty.task_id == task.id}}
-            <p>{{bounty.price}}</p>
-        {{else}}
-        {{/if}}
+    <div id="circle"> <!-- need matter.js for collision-->
+        <h2 class="circle-content">{{task.name}}</h2>
     </div>
 {{/each}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="js/script.js"></script>
