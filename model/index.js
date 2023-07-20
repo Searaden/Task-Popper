@@ -1,7 +1,6 @@
+const User = require('./User');
 const Task = require('./taskModel');
 const Bounty = require('./bountyModel');
-//const User = require('./userModel');
-
 
 Task.hasMany(Task, {
   as: 'subtasks',
@@ -18,4 +17,4 @@ Bounty.belongsTo(Task, {
     onDelete: "CASCADE",
 });
 
-module.exports = {Task, Bounty/*,User */};
+module.exports = {User, Task, Bounty};
