@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-//const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,10 +20,20 @@ app.use(session({
   saveUninitialized: false
 }));
 
-//const hbs = exphbs.create({});
+// Set up express-session middleware
+app.use(session({
+  secret: 'secret', // replace with a real secret in production
+  store: new SequelizeStore({
+    db: sequelize
+  }),
+  resave: false,
+  saveUninitialized: false
+}));
 
-//app.engine('handlebars', hbs.engine);
-//app.set('view engine', 'handlebars');
+const hbs = exphbs.create({});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

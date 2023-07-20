@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Bounty = require('../model/bountyModel');
+const Bounty = require('../../model/bountyModel'); //! onMergeCheck
 
 // Get all bounties // ! CREATED by ME
 router.get('/', async (req, res) => {

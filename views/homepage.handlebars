@@ -1,0 +1,9 @@
+{{#each tasks as |task|}}
+    <div class="bubble"> <!-- need matter.js for collision-->
+        <h2>{{}}</h2>
+        {{#if bounty.task_id == task.id}}
+            <p>{{bounty.price}}</p>
+        {{else}}
+        {{/if}}
+    </div>
+{{/each}}

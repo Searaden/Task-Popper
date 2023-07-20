@@ -1,19 +1,22 @@
 // This index will set up:
-// TODO: The bubbles to log in/sign up
-// TODO: The bubbles to first log in
+// TODO: The homepage bubbles
 // The bubble to update setting (feat pushed)
 
 const { Task, Bounty /*,User */ } = require('../model');
 
 const seedTasks = require('./taskSeed');
+const seedSubtasks = require('./subtaskSeed');
 const seedBounty = require('./bountySeed');
 //const seedUsers = require('./userSeed');
 
 const seedAll = async () =>{
     //await seedUsers();
-    //await seedTasks();
+    const seededTasks = await seedTasks();
+    const superTask = seededTasks[2].dataValues.id; 
+    //console.log("Creating subtasks for: "+ superTask)
+    //await seedSubtasks(superTask);
     //TODO: need to pass seeded tasks UUID to seed Bounties (array.map)
-    await seedBounty(); //MUST OCCUR AFTER TASKS SEED
+    //await seedBounty(); //! im not sure how to pass task id...
 }
 
 seedAll();

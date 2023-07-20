@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Task = require('../model/taskModel');
+const Task = require('../../model/taskModel'); //! onMergeCheck
 
 // Post route for subtask
 router.post('/:taskId', async (req, res) => {
