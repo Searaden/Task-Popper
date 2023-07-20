@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../config/database');
-const Task = require('./taskModel');
 
 class Bounty extends Model{};
 

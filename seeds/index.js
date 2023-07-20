@@ -7,9 +7,11 @@ const { Task, Bounty /*,User */ } = require('../model');
 const seedTasks = require('./taskSeed');
 const seedSubtasks = require('./subtaskSeed');
 const seedBounty = require('./bountySeed');
+const sequelize = require('../config/database');
 //const seedUsers = require('./userSeed');
 
 const seedAll = async () =>{
+    await sequelize.sync({force: true})
     //await seedUsers();
     const seededTasks = await seedTasks();
     const superTask = seededTasks[2].dataValues.id; 

@@ -9,6 +9,7 @@ Task.init(
     id: {
       type: DataTypes.UUID,
       defaultValue: uuidv4, // Assign the UUIDv4 function as the default value
+      allowNull: false,
       primaryKey: true,
     },
     name: {
