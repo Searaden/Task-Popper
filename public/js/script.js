@@ -64,42 +64,45 @@ function handleHoldGesture(circle) {
   }, 3000);
 }
 
-// Function to create a custom input element for editing text
-function createTextInputElement(text, callback) {
-  var input = document.createElement('input');
-  input.type = 'text';
-  input.value = text;
-  input.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-      callback(input.value);
-    }
-  });
-  return input;
-}
-
 // Function to handle the click event on a bubble with text
 function handleClickEvent(circle) {
   var textElement = circle.querySelector('.circle-content');
   var text = textElement.textContent;
 
   circle.addEventListener('click', function(event) {
-    var input = createTextInputElement(text, function(newText) {
-      textElement.textContent = newText;
-      circle.removeChild(input);
+    event.stopPropagation();
+
+    // Remove existing update box if it already exists
+    var updateBox = document.querySelector('.update-box');
+    if (updateBox) {
+      updateBox.parentNode.removeChild(updateBox);
+    }
+
+    // Create the update box
+    var updateContainer = document.createElement('div');
+    updateContainer.className = 'update-box';
+    updateContainer.innerHTML = `
+      <div class="update-title">Update Task</div>
+      <input type="text" class="update-input" value="${text}">
+      <button class="update-button">Confirm</button>
+    `;
+
+    var input = updateContainer.querySelector('.update-input');
+    var confirmButton = updateContainer.querySelector('.update-button');
+
+    confirmButton.addEventListener('click', function() {
+      textElement.textContent = input.value;
+      updateContainer.parentNode.removeChild(updateContainer);
     });
 
-    circle.appendChild(input);
+    // Position the update box above the bubble
+    var circleRect = circle.getBoundingClientRect();
+    updateContainer.style.position = 'absolute';
+    updateContainer.style.top = circleRect.top - updateContainer.offsetHeight - 10 + 'px';
+    updateContainer.style.left = circleRect.left + (circleRect.width - updateContainer.offsetWidth) / 2 + 'px';
+
+    document.body.appendChild(updateContainer);
     input.focus();
-
-    // Add event listener to detect clicks outside the input
-    document.addEventListener('click', function(event) {
-      var isClickInside = circle.contains(event.target) || input.contains(event.target);
-      if (!isClickInside) {
-        textElement.textContent = input.value;
-        circle.removeChild(input);
-        document.removeEventListener('click', this);
-      }
-    });
   });
 }
 

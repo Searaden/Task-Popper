@@ -20,15 +20,7 @@ Task.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    // task_id: {
-    //   type: DataTypes.UUID,
-    //   allowNull: true,
-    //   references: {
-    //     model:'task',
-    //     as: 'subtask',
-    //     id:'id'
-    //   }
-    // },
+
   },
   {
     sequelize,
