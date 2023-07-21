@@ -1,9 +1,15 @@
 <div class="circle-container">
-{{#each tasks as |task|}}
-    <div id="circle"> <!-- need matter.js for collision-->
-        <h2 class="circle-content">{{task.name}}</h2>
+
+  {{#each tasks as |task|}}
+  <div class="circle">
+    <div class="circle-content">{{task.name}}</div>
+  </div>
+  {{/each}}
+    <div class="circle circle-add">
+    <div class="circle-content">
+      <span class="circle-plus">+</span>
     </div>
-{{/each}}
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
