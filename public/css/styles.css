@@ -5,28 +5,92 @@ body {
   overflow: hidden;
 }
 
-#circle {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.circle {
+  position: relative;
   width: 300px;
   height: 300px;
   background-color: rgba(135, 206, 235, 0.8);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.circle-content {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
-.circle-container{
+.circle-add {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px dashed #fff;
+  cursor: pointer;
+}
+
+.circle-plus {
+  font-size: 48px;
+  color: #fff;
+}
+
+.circle-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+.circle input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+  text-align: center;
+}
+
+.circle input[type="text"]:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.circle-container {
   height: 95vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Add 20px of space between the bubbles */
+}
+
+
+/* Header Styling*/
+header {
+  background-color: rgba(135, 206, 235, 0.8);;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #87CEEB;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Login Button */
+.login-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #87CEEB;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  float: right;
 }
