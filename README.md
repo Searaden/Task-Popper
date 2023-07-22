@@ -1,5 +1,8 @@
 # Task Popper
 
+## Live:
+https://secret-reef-91746-210dc06d9a2f.herokuapp.com/
+
 ## Description
 
 Task popper is a streamlined and simplified approach to task management. The user will only be shown their tasks as bubbles. There are only 3 current options. Create bubble (task), edit bubble, and pop bubble (complete tasks)
@@ -27,7 +30,7 @@ Joel Quezada: https://github.com/SirDrPancake
 Jake Norris: https://github.com/Searaden
 
 ## Other Links
-Live: 
+Live: https://secret-reef-91746-210dc06d9a2f.herokuapp.com/
 Github Repo: https://github.com/Searaden/Task-Popper
 Pitch: https://docs.google.com/presentation/d/1i1kod8kaOXrFI5FsuI1t5q0vLrG1t00wkSUDEmT2Ji4/edit#slide=id.p
 WireFrame: https://www.figma.com/file/B3oRHV984h00eQ1sNYFwcf/Untitled?type=design&node-id=0-1&mode=design&t=u0XAp9a7NKRu7Hkw-0
