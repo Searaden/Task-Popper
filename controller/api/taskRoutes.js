@@ -12,9 +12,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // Get a specific task
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
+  console.log(`calling PUT route for ${id}`);
   try {
     const task = await Task.findByPk(id);
     if (!task) {
@@ -40,14 +42,14 @@ router.post('/', async (req, res) => {
 // Update a task
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, size } = req.body;
+  const { name } = req.body; //Deprecated size
   try {
     const task = await Task.findByPk(id);
     if (!task) {
       return res.status(404).json({ error: 'Task not found' });
     }
     task.name = name;
-    task.size = size;
+    //task.size = size;
     await task.save();
     return res.json({ task });
   } catch (error) {

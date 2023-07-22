@@ -30,9 +30,18 @@ body {
   cursor: pointer;
 }
 
-.circle-add {
+.circle-add { 
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   border: 2px dashed #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
