@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../config/database');
+const User = require('./User');
 
 class Task extends Model {}
 
@@ -20,15 +21,22 @@ Task.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
+    user_id: { // Add a user_id field to associate each task with a user
+      type: DataTypes.UUID,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    // underscored: true,
     modelName: 'task',
   }
 );
+
+
 
 module.exports = Task;
