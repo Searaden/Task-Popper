@@ -2,10 +2,10 @@
 
   {{#each tasks as |task|}}
   <div class="circle">
-    <div class="circle-content">{{task.name}}</div>
+    <div class="circle-content" data-id={{task.id}}>{{task.name}}</div>
   </div>
   {{/each}}
-    <div class="circle circle-add">
+    <div class="circle-add">
     <div class="circle-content">
       <span class="circle-plus">+</span>
     </div>

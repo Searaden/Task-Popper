@@ -60,8 +60,13 @@ function handleHoldGesture(circle) {
     if (shakeAnimation) {
       shakeAnimation.pause(); // Pause the shaking animation
       startPoppingAnimation(circle);
+      //Calling DELETE route to remove
+      var textElement = circle.querySelector('.circle-content');
+      const taskID = textElement.dataset.id;
+      deleteTask(taskID);
+
     }
-  }, 3000);
+  }, 500);
 }
 
 // Function to handle the click event on a bubble with text
@@ -71,7 +76,7 @@ function handleClickEvent(circle) {
 
   circle.addEventListener('click', function(event) {
     event.stopPropagation();
-
+    
     // Remove existing update box if it already exists
     var updateBox = document.querySelector('.update-box');
     if (updateBox) {
@@ -93,6 +98,10 @@ function handleClickEvent(circle) {
     confirmButton.addEventListener('click', function() {
       textElement.textContent = input.value;
       updateContainer.parentNode.removeChild(updateContainer);
+      
+      //Using PUT route to update task
+      const taskID = textElement.dataset.id;
+      updateTask(taskID, input.value)
     });
 
     // Position the update box above the bubble
@@ -105,6 +114,29 @@ function handleClickEvent(circle) {
     input.focus();
   });
 }
+
+//Call PUT route
+const updateTask = async (id, updatedTaskName) => {
+  console.log(`calling PUT route for ${id}, changing to ${updatedTaskName}`)
+  const url = `/api/task/${id}`;
+
+  try {
+    const res = await fetch(url,{
+      method:'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({name: updatedTaskName})
+    });
+
+    if (!res.ok){
+      throw new Error('Update failed!')
+    }
+
+    console.log("Update Successful!")
+  }catch(err){
+    console.error(err);
+  }
+};
+
 
 // Add a mousedown event listener to the circles
 var circles = document.getElementsByClassName('circle');
@@ -125,7 +157,7 @@ for (var i = 0; i < circles.length; i++) {
       if (isHolding) {
         handleHoldGesture(circle);
       }
-    }, 3000); // Set the hold duration to 3000 milliseconds (3 seconds)
+    }, 500); // Set the hold duration to 500 milliseconds (.5 seconds)
   });
 }
 
@@ -142,7 +174,26 @@ document.addEventListener('mouseup', function() {
     shakeAnimation.pause();
     shakeAnimation = null;
   }
+
+
 });
 
 // Play the scale up animation on page load
 scaleUpAnimation.play();
+
+//Call PUT route
+const deleteTask = async (id) => {
+  console.log(`calling delete route for ${id}`)
+  const url = `/api/task/${id}`;
+
+  try {
+    const res = await fetch(url,{ method:'DELETE' });
+
+    if (!res.ok){
+      throw new Error('Update failed!')
+    }
+    console.log("Update Successful!")
+  }catch(err){
+    console.error(err);
+  }
+};

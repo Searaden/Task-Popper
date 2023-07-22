@@ -14,7 +14,7 @@ const taskData = [
         //subtasks not needed
     },
     {
-        name: 'Click me to view subtasks for this task',
+        name: 'Click me to edit this task',
         size: 4
         //subtasks need
     },
