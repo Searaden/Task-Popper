@@ -87,8 +87,6 @@ function handleClickEvent(circle) {
       addBox.parentNode.removeChild(addBox);
     }
 
-
-
     // Create the update box
     var updateContainer = document.createElement('div');
     updateContainer.className = 'update-box';
