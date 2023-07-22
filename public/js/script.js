@@ -82,6 +82,12 @@ function handleClickEvent(circle) {
     if (updateBox) {
       updateBox.parentNode.removeChild(updateBox);
     }
+    var addBox = document.querySelector('.add-box');
+    if (addBox) {
+      addBox.parentNode.removeChild(addBox);
+    }
+
+
 
     // Create the update box
     var updateContainer = document.createElement('div');
@@ -190,9 +196,9 @@ const deleteTask = async (id) => {
     const res = await fetch(url,{ method:'DELETE' });
 
     if (!res.ok){
-      throw new Error('Update failed!')
+      throw new Error('Delete failed!')
     }
-    console.log("Update Successful!")
+    console.log("Delete Successful!")
   }catch(err){
     console.error(err);
   }
