@@ -30,12 +30,17 @@ router.get('/:id', async (req, res) => {
 
 // Create a new task
 router.post('/', async (req, res) => {
-  const { name, size } = req.body;
-  try {
-    const task = await Task.create({ name, size });
-    return res.json({ task });
-  } catch (error) {
-    return res.status(500).json({ error: 'Internal server error' });
+  var { name } = req.body; //Deprecated size
+  name = name.trim();
+  if(!name){
+    return res.status(400).json({ error: 'Bad Request' });
+  }else{
+    try {
+      const task = await Task.create({ name });
+      return res.status(200).json({ task });
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   }
 });
 

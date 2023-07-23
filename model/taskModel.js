@@ -18,7 +18,7 @@ Task.init(
     },
     size: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,    //marked for deprecation
     },
 
   },

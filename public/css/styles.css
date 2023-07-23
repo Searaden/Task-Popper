@@ -55,7 +55,8 @@ body {
   font-weight: bold;
   text-align: center;
 }
-.update-box {
+.update-box,
+.add-box{
   position: absolute;
   top: 0;
   left: 50%;
@@ -71,13 +72,15 @@ body {
   z-index: 1;
 }
 
-.update-title {
+.update-title,
+.add-title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.update-input {
+.update-input,
+.add-input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -87,7 +90,8 @@ body {
   border-radius: 5px;
 }
 
-.update-button {
+.update-button,
+.add-button {
   padding: 10px 20px;
   background-color: #4caf50;
   color: #fff;
