@@ -19,7 +19,7 @@ Task.init(
     },
     size: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,    //marked for deprecation
     },
     user_id: { // Add a user_id field to associate each task with a user
       type: DataTypes.UUID,

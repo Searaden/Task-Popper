@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { name, size } = req.body;
   try {
-    const task = await Task.create({ name, size, user_id: req.session.user_id });
+    const task = await Task.create({ name, size });
     return res.json({ task });
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
