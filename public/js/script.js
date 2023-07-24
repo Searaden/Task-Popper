@@ -185,7 +185,7 @@ document.addEventListener('mouseup', function() {
 // Play the scale up animation on page load
 scaleUpAnimation.play();
 
-//Call PUT route
+//Call DELETE route
 const deleteTask = async (id) => {
   console.log(`calling delete route for ${id}`)
   const url = `/api/task/${id}`;

@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const Task = require('./model/taskModel');
+// const Task = require('./model/taskModel');  //TODO: validate use case here?
 
 const exphbs = require('express-handlebars');
 
@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./controller/'));
+app.use(require('./controller'));
 
 
 sequelize.sync({ force: false }).then(() => {

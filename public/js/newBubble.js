@@ -9,7 +9,7 @@ addCircle.addEventListener('click',(event)=>{
     addPrompt();
 });
 
-// Remove other dialog boxes
+// Remove dialog boxes (currently not focused/active)
 const removeBoxes = ()=>{
     const updateBox = document.querySelector('.update-box');
     const addBox = document.querySelector('.add-box');
@@ -34,7 +34,6 @@ const addPrompt = ()=>{
     inputText.focus();
 };
 
-
 // Position add box above bubble
 const setPromptPosition = (target) =>{
     const circleRect = addCircle.getBoundingClientRect();
@@ -42,7 +41,6 @@ const setPromptPosition = (target) =>{
     target.style.top = circleRect.top - target.offsetHeight -10+'px';
     target.style.left = circleRect.left + (circleRect.width - target.offsetWidth) / 2 + 'px';
 };
-
 
 const listenToConfirm = (parent, textBox) =>{
     const confirmButton = parent.querySelector('.add-button');
