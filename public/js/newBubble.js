@@ -1,5 +1,4 @@
 const addCircle= document.querySelector('.circle-plus');
-console.log(addCircle);
 
 // Add-Circle will have an event listener for 'click'
 addCircle.addEventListener('click',(event)=>{

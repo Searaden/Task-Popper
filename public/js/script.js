@@ -10,7 +10,7 @@ var timeline = anime.timeline({
 
 // Animate the circles to scale up on page load
 var scaleUpAnimation = anime({
-  targets: '.circle',
+  targets: '.circle', 
   scale: 1,
   easing: 'easeOutExpo',
   duration: 800,

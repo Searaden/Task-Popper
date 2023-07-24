@@ -1,15 +1,18 @@
-<form id="signup-form">
+<div class="circle-container">
+  <form id="signup-form" class="form">
     <label for="username-input">Username</label>
     <input id="username-input" type="text" />
-
+    
     <label for="password-input">Password</label>
     <input id="password-input" type="password" />
-
-    <button type="submit">Sign up</button>
-
+    <button class="log-button" type="submit">Sign up</button>
     <div class="has-text-centered">
-        <p>Already have an account? <a href="/login" class="has-text-danger">Login</a></p>
-      </div>
-</form>
+      <p>Already have an account?
+        <a href="/login" class="has-text-danger">Login</a>
+      </p>
+    </div>
+  </form>
+</div>
+
 
 <script src="/js/signup.js"></script>
