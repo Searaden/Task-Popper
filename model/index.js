@@ -17,4 +17,12 @@ Bounty.belongsTo(Task, {
     onDelete: "CASCADE",
 });
 
+User.hasMany(Task, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
+Task.belongsTo(User, {
+  foreignKey: 'user_id',
+});
 module.exports = {User, Task, Bounty};

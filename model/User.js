@@ -3,7 +3,6 @@ const { v4: uuidv4 } = require('uuid');
 const sequelize = require('../config/database');
 const bcrypt = require('bcrypt');
 
-
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
