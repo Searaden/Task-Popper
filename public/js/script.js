@@ -10,7 +10,7 @@ var timeline = anime.timeline({
 
 // Animate the circles to scale up on page load
 var scaleUpAnimation = anime({
-  targets: '.circle',
+  targets: '.circle', 
   scale: 1,
   easing: 'easeOutExpo',
   duration: 800,
@@ -185,7 +185,7 @@ document.addEventListener('mouseup', function() {
 // Play the scale up animation on page load
 scaleUpAnimation.play();
 
-//Call PUT route
+//Call DELETE route
 const deleteTask = async (id) => {
   console.log(`calling delete route for ${id}`)
   const url = `/api/task/${id}`;

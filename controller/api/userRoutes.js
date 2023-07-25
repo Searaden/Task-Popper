@@ -1,48 +1,69 @@
 const router = require('express').Router();
 const User = require('../../model/User');
-const bcrypt = require('bcrypt');;
 
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await User.create({ username, password });
-    req.session.user = {
-      id: user.id,
-      username: user.username,
-    };
-    return res.json(user);
+    const userData = await User.create({ username, password });
+    // req.session.user = {
+    //   id: user.id,
+    //   username: user.username,
+    // };
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
   } catch (error) {
-    console.log(error); // Logs the error to the console
-    return res.status(500).json({ error: error.message }); // Sends the error message in the response
+    console.log(error);
+    return res.status(500).json({ error: error.message });
   }
 });
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const user = await User.findOne({ where: { username } });
-    if (user && bcrypt.compareSync(password, user.password)) {
-      req.session.user = {
-        id: user.id,
-        username: user.username,
-      };
-      return res.json(user);
-    } else {
-      return res.status(401).json({ error: 'bad username or password' });
+    try {
+        const { username, password } = req.body;
+        const userData = await User.findOne({ where: { username } });
+
+        if (!userData) { // Fail, if user doesn's exist
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+        
+        const validPassword = await userData.checkPassword(password);
+        if (!validPassword) { //Fail, if password doesn't clear
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+  
+      // Create session variables based on the logged in user
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+        req.session.username = username;
+        
+        res.json({ user: userData, message: 'You are now logged in!' });
+      });
+  
+    } catch (err) {
+      res.status(400).json(err);
     }
-  } catch (error) {
-    return res.status(500).json({ error: 'server error' });
-  }
+  });
+  
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+      // Remove the session variables
+      req.session.destroy(() => { res.status(204).end(); });
+    } else { res.status(404).end(); }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session && req.session.user) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(400).end();
-  }
-});
+
+
+
 
 module.exports = router;
